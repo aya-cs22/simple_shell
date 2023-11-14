@@ -4,7 +4,7 @@
  * _getenv - prints the environment to putput
  * Return: void
 */
-
+extern char **environ;
 void _getenv(void)
 {
 	int i = 0;
