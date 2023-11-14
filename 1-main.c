@@ -22,6 +22,6 @@ int main(int argc, const char *argv[])
 		{
 			perror("ERROR:");
 			return (-1); } }
-	free(buffer);
-	return (0);
+		free(buffer);
+		return (0);
 }
