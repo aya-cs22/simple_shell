@@ -16,7 +16,6 @@ char *tem_getline(void)
 		{
 			if (feof(stdin))
 			{
-				write(STDOUT_FILENO, "\n", 1);
 				free(buffer);
 				exit(EXIT_SUCCESS);
 			}
@@ -29,5 +28,6 @@ char *tem_getline(void)
 		}
 		if (charsread > 0 && buffer[charsread - 1] == '\n')
 			buffer[charsread - 1] = '\0';
+		
 		return (buffer);
 }

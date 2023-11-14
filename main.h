@@ -16,5 +16,8 @@ int execute_file(char *command, char **argv);
 char *tem_getline(void);
 char **tmp_strtok(char *buffer);
 char *getpath(char *filename);
+void interacrive();
+void noninteractive();
+void _getenv(void);
 
 #endif
