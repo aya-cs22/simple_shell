@@ -5,14 +5,14 @@
  * Return: void
 */
 
-void interacrive()
+void interacrive(void)
 {
-    char *fullpath, *buffer = NULL;
+	char *fullpath, *buffer = NULL;
 	char **bufptr = NULL;
 
-    while(1)
-    {
-        write(STDOUT_FILENO, "#cisfun$: ", 11);
+	while (1)
+	{
+		write(STDOUT_FILENO, "#cisfun$: ", 10);
 		buffer = tem_getline();
 		bufptr = tmp_strtok(buffer);
 		if (strcmp(bufptr[0], "exit") == 0)
@@ -21,14 +21,14 @@ void interacrive()
 			free(bufptr);
 			exit(EXIT_SUCCESS);
 		}
-        if (strcmp(bufptr[0], "env") == 0)
+		if (strcmp(bufptr[0], "env") == 0)
 		{
 			_getenv();
 		}
 		fullpath = getpath(bufptr[0]);
 		if (fullpath == NULL)
 			fullpath = bufptr[0];
-		
+
 		if (execute_file(fullpath, bufptr) == -1)
 		{
 			perror("ERROR:");

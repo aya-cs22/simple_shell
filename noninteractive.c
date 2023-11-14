@@ -5,16 +5,16 @@
  * Return: void
 */
 
-void noninteractive()
+void noninteractive(void)
 {
-    char *fullpath, *buffer = NULL;
+	char *fullpath, *buffer = NULL;
 	char **bufptr = NULL;
-    
-    while(1)
-    {
+
+	while (1)
+	{
 		buffer = tem_getline();
-        if (buffer[0] == '\0' || buffer[0] == '\n')
-            continue;
+		if (buffer[0] == '\0' || buffer[0] == '\n')
+			continue;
 		bufptr = tmp_strtok(buffer);
 		if (strcmp(bufptr[0], "exit") == 0)
 		{
@@ -29,7 +29,7 @@ void noninteractive()
 		fullpath = getpath(bufptr[0]);
 		if (fullpath == NULL)
 			fullpath = bufptr[0];
-		
+
 		if (execute_file(fullpath, bufptr) == -1)
 		{
 			perror("ERROR:");

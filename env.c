@@ -5,15 +5,15 @@
  * Return: void
 */
 extern char **environ;
-
 void _getenv(void)
 {
-    int i = 0;
-    char ** env = environ;
-    while (env[i] != NULL)
-    {
-        write(STDOUT_FILENO, env[i], strlen(env[i]));
-        write(STDOUT_FILENO, "\n", 1);
-        i++;
-    }
+	int i = 0;
+	char **env = environ;
+
+	while (env[i] != NULL)
+	{
+		write(STDOUT_FILENO, env[i], strlen(env[i]));
+		write(STDOUT_FILENO, "\n", 1);
+		i++;
+	}
 }
