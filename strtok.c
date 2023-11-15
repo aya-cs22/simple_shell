@@ -9,9 +9,9 @@
 
 char **tmp_strtok(char *buffer)
 {
+
 	int i = 0;
 	char *token, *bufcpy = strdup(buffer);
-
 	char **ptrarr;
 
 	if (bufcpy == NULL)
@@ -34,7 +34,7 @@ char **tmp_strtok(char *buffer)
 	while (token != NULL)
 	{
 		ptrarr[i] = (token);
-		token = strtok(NULL, "\t\n ");
+		token = strtok(NULL, " \t\n");
 		i++; }
 	ptrarr[i] = NULL;
 	free(bufcpy);

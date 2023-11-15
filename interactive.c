@@ -15,7 +15,9 @@ void interacrive(void)
 		write(STDOUT_FILENO, "#cisfun$: ", 10);
 		buffer = tem_getline();
 		bufptr = tmp_strtok(buffer);
-		if (strcmp(bufptr[0], "exit") == 0)
+		if (bufptr[0] != NULL)
+		{
+			if (strcmp(bufptr[0], "exit") == 0)
 		{
 			free(buffer);
 			free(bufptr);
@@ -35,4 +37,5 @@ void interacrive(void)
 			exit(EXIT_FAILURE); } }
 	free(buffer);
 	free(bufptr);
+	}
 }

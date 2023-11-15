@@ -12,6 +12,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+extern char **environ;
 int execute_file(char *command, char **argv);
 char *tem_getline(void);
 char **tmp_strtok(char *buffer);

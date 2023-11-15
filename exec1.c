@@ -14,21 +14,16 @@ int execute_file(char *command, char **argv)
 
 
 	id = fork();
-	if (id == -1)
-	{
-		perror("FORK:");
-		free(command);
-		return (-1);
-	}
 	if (id == 0)
 	{
 		if (execve(command, argv, NULL) == -1)
 		{
-			perror("ERROR:");
-			_exit(EXIT_FAILURE);
+			perror(argv[0]);
+			free(command);
+			exit(100);
 		}
 	}
-	wait(&status);
+	waitpid(id, &status, 0);
 	free(command);
-	return (0);
+	return (WEXITSTATUS(status));
 }
