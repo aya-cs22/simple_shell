@@ -18,7 +18,9 @@ char *tem_getline(void);
 char **tmp_strtok(char *buffer);
 char *getpath(char *filename);
 void interacrive(void);
-void noninteractive(void);
 void _getenv(void);
+void noninteractive(void);
+void interactive_mode(char **argv, char **env);
+
 
 #endif

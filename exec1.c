@@ -18,13 +18,10 @@ int execute_file(char *command, char **argv)
 
 	}
 	id = fork();
-	
-
 	if (id == 0)
 	{
 		if (execve(command, argv, NULL) == -1)
 		{
-			
 			perror(argv[0]);
 			free(command);
 			exit(100);

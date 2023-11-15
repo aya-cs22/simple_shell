@@ -36,9 +36,8 @@ void interacrive(void)
 			{
 				perror(getenv("_")); } }
 		else
-        	{
+		{
 			free(bufptr[i]);
-			free(bufptr);
-    		}
+			free(bufptr); }
 	}
 }
