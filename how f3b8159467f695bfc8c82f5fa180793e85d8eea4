@@ -1,0 +1,36 @@
+[33mcommit f3b8159467f695bfc8c82f5fa180793e85d8eea4[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: aya-cs22 <aya786930@gmail.com>
+Date:   Wed Nov 15 05:48:09 2023 +0200
+
+    A recent update to our simple shell!
+
+[33mcommit 02b5a38bbc30fc4fa98a75756c1ee693953292fa[m
+Merge: 56096f5 e1fe19e
+Author: aya-cs22 <aya786930@gmail.com>
+Date:   Tue Nov 14 19:31:07 2023 +0200
+
+    pull
+
+[33mcommit 56096f5f85163697991240910fdc4997fd19809e[m
+Author: aya-cs22 <aya786930@gmail.com>
+Date:   Tue Nov 14 16:26:21 2023 +0200
+
+    Committing local changes before merge
+
+[33mcommit e1fe19e3cee5bc4173ec2813b541b1cc28187df8[m
+Author: HagarSamy <hagarsami63@gmai.com>
+Date:   Tue Nov 14 15:33:14 2023 +0200
+
+    A recent update to our simple shell!
+
+[33mcommit 45dfac5658a932e15df4130d6603ee857b099526[m
+Author: HagarSamy <hagarsami63@gmai.com>
+Date:   Mon Nov 13 13:48:52 2023 +0200
+
+    First portion of shell codes dealing with simple command
+
+[33mcommit 9064e4e65d243a7b731cc78184faf727f1b6e397[m
+Author: HagarSamy <hagarsami63@gmai.com>
+Date:   Mon Nov 13 13:45:39 2023 +0200
+
+    First portion of shell codes dealing with simple command
