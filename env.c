@@ -8,6 +8,7 @@ extern char **environ;
 
 void _getenv(void)
 {
+    
     int i = 0;
     char ** env = environ;
     while (env[i] != NULL)
