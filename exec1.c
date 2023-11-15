@@ -12,12 +12,19 @@ int execute_file(char *command, char **argv)
 	int status;
 	pid_t id;
 
+	if (access(command, F_OK) != 0)
+	{
+		return (-1);
 
+	}
 	id = fork();
+	
+
 	if (id == 0)
 	{
 		if (execve(command, argv, NULL) == -1)
 		{
+			
 			perror(argv[0]);
 			free(command);
 			exit(100);

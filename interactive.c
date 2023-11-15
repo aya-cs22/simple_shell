@@ -34,8 +34,7 @@ void interacrive(void)
 
 			if (execute_file(fullpath, bufptr) == -1)
 			{
-				perror("ERROR:");
-				exit(EXIT_FAILURE); } }
+				perror(getenv("_")); } }
 		else
         	{
 			free(bufptr[i]);
