@@ -11,6 +11,7 @@ char **tmp_strtok(char *buffer)
 {
 	int i = 0;
 	char *token, *bufcpy = strdup(buffer);
+
 	char **ptrarr;
 
 	if (bufcpy == NULL)

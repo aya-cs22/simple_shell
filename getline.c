@@ -28,5 +28,6 @@ char *tem_getline(void)
 		}
 		if (charsread > 0 && buffer[charsread - 1] == '\n')
 			buffer[charsread - 1] = '\0';
+
 		return (buffer);
 }

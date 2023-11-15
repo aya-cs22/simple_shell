@@ -12,13 +12,13 @@ int main(int argc, const char *argv[])
 	(void)argc;
 	(void)argv;
 
-	if (isatty(STDIN_FILENO) == 1)
-	{
-		interacrive();
-	}
-	else
-	{
-		noninteractive();
-	}
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			interacrive();
+		}
+		else
+		{
+			noninteractive();
+		}
 	return (0);
 }
