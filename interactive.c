@@ -9,6 +9,7 @@ void interacrive(void)
 {
 	char *fullpath, *buffer = NULL;
 	char **bufptr = NULL;
+	int i = 0;
 
 	while (1)
 	{
@@ -18,24 +19,27 @@ void interacrive(void)
 		if (bufptr[0] != NULL)
 		{
 			if (strcmp(bufptr[0], "exit") == 0)
-		{
-			free(buffer);
-			free(bufptr);
-			exit(EXIT_SUCCESS);
-		}
-		if (strcmp(bufptr[0], "env") == 0)
-		{
-			_getenv();
-		}
-		fullpath = getpath(bufptr[0]);
-		if (fullpath == NULL)
-			fullpath = bufptr[0];
+			{
+				free(buffer);
+				free(bufptr);
+				exit(EXIT_SUCCESS);
+			}
+			if (strcmp(bufptr[0], "env") == 0)
+			{
+				_getenv();
+			}
+			fullpath = getpath(bufptr[0]);
+			if (fullpath == NULL)
+				fullpath = bufptr[0];
 
-		if (execute_file(fullpath, bufptr) == -1)
-		{
-			perror("ERROR:");
-			exit(EXIT_FAILURE); } }
-	free(buffer);
-	free(bufptr);
+			if (execute_file(fullpath, bufptr) == -1)
+			{
+				perror("ERROR:");
+				exit(EXIT_FAILURE); } }
+		else
+        	{
+			free(bufptr[i]);
+			free(bufptr);
+    		}
 	}
 }
