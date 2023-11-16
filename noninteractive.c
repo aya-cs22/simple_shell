@@ -18,9 +18,14 @@ void noninteractive(void)
 		bufptr = tmp_strtok(buffer);
 		if (strcmp(bufptr[0], "exit") == 0)
 		{
+			if (bufptr[1] == NULL)
+			{
+				free(buffer);
+				free(bufptr);
+				exit(EXIT_SUCCESS); }
 			free(buffer);
 			free(bufptr);
-			exit(EXIT_SUCCESS);
+			exit(2);
 		}
 		if (strcmp(bufptr[0], "env") == 0)
 		{
