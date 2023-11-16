@@ -12,21 +12,19 @@ void noninteractive(void)
 
 	while (1)
 	{
+		int exit_status;
 		buffer = tem_getline();
 		if (buffer[0] == '\0' || buffer[0] == '\n')
 			continue;
 		bufptr = tmp_strtok(buffer);
 		if (strcmp(bufptr[0], "exit") == 0)
-		{
-			if (bufptr[1] == NULL)
-			{
-				free(buffer);
-				free(bufptr);
-				exit(EXIT_SUCCESS); }
-			free(buffer);
-			free(bufptr);
-			exit(2);
-		}
+    	{
+			exit_status = (bufptr[1] != NULL) ? atoi(bufptr[1]) : 2;
+
+    		free(buffer);
+    		free(bufptr);
+    		exit(exit_status); }
+
 		if (strcmp(bufptr[0], "env") == 0)
 		{
 			_getenv();
