@@ -16,7 +16,7 @@ char *getpath(char *filename)
 	if (pathcpy == NULL)
 	{
 		perror("strdup ERROR:");
-		return (NULL); }
+		exit (EXIT_FAILURE); }
 	token = strtok(pathcpy, ":");
 	while (token != NULL)
 	{
@@ -25,7 +25,7 @@ char *getpath(char *filename)
 		{
 			perror("malloc ERROR:");
 			free(pathcpy);
-			return (NULL); }
+			exit (EXIT_FAILURE); }
 		strcpy(fullpath, token);
 		strcat(fullpath, "/");
 		strcat(fullpath, filename);

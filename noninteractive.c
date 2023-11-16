@@ -12,19 +12,21 @@ void noninteractive(void)
 
 	while (1)
 	{
-		int exit_status;
 		buffer = tem_getline();
 		if (buffer[0] == '\0' || buffer[0] == '\n')
 			continue;
 		bufptr = tmp_strtok(buffer);
 		if (strcmp(bufptr[0], "exit") == 0)
-    	{
-			exit_status = (bufptr[1] != NULL) ? atoi(bufptr[1]) : 2;
-
-    		free(buffer);
-    		free(bufptr);
-    		exit(exit_status); }
-
+		{
+			if (bufptr[1] != NULL)
+			{
+				free(buffer);
+				free(bufptr);
+				exit(2); }
+			else{
+				free(buffer);
+				free(bufptr);
+				exit(0); }		}
 		if (strcmp(bufptr[0], "env") == 0)
 		{
 			_getenv();
@@ -36,7 +38,7 @@ void noninteractive(void)
 		if (execute_file(fullpath, bufptr) == -1)
 		{
 			perror("ERROR:");
-			exit(EXIT_FAILURE); } }
+			exit(126); } }
 	free(buffer);
 	free(bufptr);
 }

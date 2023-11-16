@@ -28,7 +28,7 @@ char **tmp_strtok(char *buffer)
 	{
 		perror("malloc ERROR:");
 		free(bufcpy);
-		return (NULL); }
+		exit(EXIT_FAILURE); }
 	i = 0;
 	token = strtok(buffer, " \t\n");
 	while (token != NULL)
