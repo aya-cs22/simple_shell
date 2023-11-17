@@ -25,7 +25,8 @@ char **tmp_strtok(char *buffer)
 	{
 		perror("malloc ERROR:");
 		free(buffer);
-		return (NULL); }
+		free(ptrarr);
+		exit(EXIT_FAILURE); }
 	i = 0;
 	token = strtok(buffer, " \t\n");
 	while (token != NULL)
@@ -35,10 +36,8 @@ char **tmp_strtok(char *buffer)
 		{
 			perror("strdup ERROR:");
 			free(ptrarr[i]);
-			freeme(ptrarr);
-			free(ptrarr);
-			free(buffer);
-			return (NULL);
+			free(ptrarr), free(buffer);
+			exit(EXIT_FAILURE);
 		}
 		token = strtok(NULL, " \t\n");
 		i++; }

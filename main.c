@@ -11,7 +11,7 @@ int main(int argc, const char *argv[])
 {
 	char *buffer = NULL;
 	char **bufptr = NULL, *fullpath = NULL;
-	int status = 0;
+	int status = 0, i;
 	(void)argc;
 	(void)argv;
 
@@ -24,6 +24,7 @@ int main(int argc, const char *argv[])
 		{
 			free(buffer);
 			return (status);
+			exit(0);
 		}
 		bufptr = tmp_strtok(buffer);
 		if (!bufptr)
@@ -35,10 +36,11 @@ int main(int argc, const char *argv[])
 		if (execute_file(bufptr) == -1)
 		{
 			perror(getenv("_")); }
-		freeme(bufptr);
-		free(bufptr);
+		for (i = 0; bufptr[i]!= NULL; i++)
+		{
+			free(bufptr); }
 		if (fullpath != bufptr[0])
 			free(fullpath);
-	}
+		}
 	return (status);
 }

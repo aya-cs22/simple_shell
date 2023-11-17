@@ -22,13 +22,14 @@ int execute_file(char **command)
 		if (execve(command[0], command, environ) == -1)
 		{
 			perror(command[0]);
-			freeme(command);
+			free(command[0]);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		waitpid(id, &status, 0);
-		freeme(command);
+		free(command);
 	}
 	return (WEXITSTATUS(status));
 }
