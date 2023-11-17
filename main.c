@@ -36,7 +36,7 @@ int main(int argc, const char *argv[])
 		if (execute_file(bufptr) == -1)
 		{
 			perror(getenv("_")); }
-		for (i = 0; bufptr[i]!= NULL; i++)
+		for (i = 0; bufptr[i] != NULL; i++)
 		{
 			free(bufptr); }
 		if (fullpath != bufptr[0])

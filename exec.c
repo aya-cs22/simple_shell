@@ -29,7 +29,7 @@ int execute_file(char **command)
 	else
 	{
 		waitpid(id, &status, 0);
-		free(command);
+		free(command[0]);
 	}
 	return (WEXITSTATUS(status));
 }
