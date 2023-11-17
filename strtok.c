@@ -10,7 +10,7 @@
 char **tmp_strtok(char *buffer)
 {
 
-	int j, i = 0;
+	int i = 0;
 	char *token, *bufcpy = strdup(buffer);
 	char **ptrarr;
 
@@ -31,16 +31,7 @@ char **tmp_strtok(char *buffer)
 	token = strtok(buffer, " \t\n");
 	while (token != NULL)
 	{
-		ptrarr[i] = strdup(token);
-		if (ptrarr[i] == NULL)
-		{
-			perror("strdup ERROR:");
-			free(ptrarr[i]);
-			for (j = 0; j < i; j++)
-				free(ptrarr[j]);
-			free(ptrarr), free(buffer);
-			exit(EXIT_FAILURE);
-		}
+		ptrarr[i] = (token);
 		token = strtok(NULL, " \t\n");
 		i++; }
 	free(buffer), buffer = NULL;

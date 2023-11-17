@@ -29,7 +29,6 @@ char *getpath(char *filename)
 		{
 			free(pathcpy);
 			return (fullpath); }
-		
 		free(fullpath);
 		token = strtok(NULL, ":"); }
 	free(pathcpy);
