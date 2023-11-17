@@ -32,14 +32,14 @@ char **tmp_strtok(char *buffer)
 	{
 		ptrarr[i] = strdup(token);
 		if (ptrarr[i] == NULL)
-			{
-				perror("strdup ERROR:");
-            	free(ptrarr[i]);
-				freeme(ptrarr);
-				free(ptrarr);
-            	free(buffer);
-            	return NULL;
-			}
+		{
+			perror("strdup ERROR:");
+			free(ptrarr[i]);
+			freeme(ptrarr);
+			free(ptrarr);
+			free(buffer);
+			return (NULL);
+		}
 		token = strtok(NULL, " \t\n");
 		i++; }
 	free(buffer), buffer = NULL;

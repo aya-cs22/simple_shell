@@ -28,17 +28,16 @@ int main(int argc, const char *argv[])
 		bufptr = tmp_strtok(buffer);
 		if (!bufptr)
 			continue;
-		
 		fullpath = getpath(bufptr[0]);
 			if (fullpath == NULL)
 			fullpath = bufptr[0];
 		bufptr[0] = fullpath;
 		if (execute_file(bufptr) == -1)
-			{
-				perror(getenv("_")); }
+		{
+			perror(getenv("_")); }
 		freeme(bufptr);
 		free(bufptr);
-		if (fullpath != bufptr[0]) 
+		if (fullpath != bufptr[0])
 			free(fullpath);
 	}
 	return (status);
