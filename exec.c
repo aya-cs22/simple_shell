@@ -22,7 +22,6 @@ int execute_file(char **command)
 		if (execve(command[0], command, environ) == -1)
 		{
 			perror(command[0]);
-			free(command[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
