@@ -14,20 +14,10 @@ char *tem_getline(void)
 	charsread = getline(&buffer, &n, stdin);
 		if (charsread == -1)
 		{
-			if (feof(stdin))
-			{
-				free(buffer);
-				exit(EXIT_SUCCESS);
-			}
-			else if (ferror(stdin))
-			{
-				perror("ERROR reading line:");
-				free(buffer);
-				return (NULL);
-			}
+			free(buffer);
+			return (NULL);
 		}
 		if (charsread > 0 && buffer[charsread - 1] == '\n')
 			buffer[charsread - 1] = '\0';
-
 		return (buffer);
 }

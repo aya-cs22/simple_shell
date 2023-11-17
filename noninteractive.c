@@ -15,6 +15,8 @@ void noninteractive(void)
 		buffer = tem_getline();
 		if (buffer[0] == '\0' || buffer[0] == '\n')
 			continue;
+		if (buffer == NULL)
+			return;
 		bufptr = tmp_strtok(buffer);
 		if (strcmp(bufptr[0], "exit") == 0)
 		{
