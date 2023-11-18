@@ -3,15 +3,16 @@
 /**
  * execute_file - excutes a file
  * @command: a line command to execute
+ * @argv: arguments to pass to the command line
  * Return: 0 on success, -1 on failure
 */
 
-int execute_file(char **command)
+int execute_file(char *command, char **argv)
 {
 	int status;
 	pid_t id;
 
-	if (access((const char *)command[0], F_OK) != 0)
+	if (access(command, F_OK) != 0)
 	{
 		return (-1);
 
@@ -19,16 +20,14 @@ int execute_file(char **command)
 	id = fork();
 	if (id == 0)
 	{
-		if (execve(command[0], command, environ) == -1)
+		if (execve(command, argv, NULL) == -1)
 		{
-			perror(command[0]);
-			exit(EXIT_FAILURE);
+			perror(argv[0]);
+			free(command);
+			exit(100);
 		}
 	}
-	else
-	{
-		waitpid(id, &status, 0);
-		free(command[0]);
-	}
+	waitpid(id, &status, 0);
+	free(command);
 	return (WEXITSTATUS(status));
 }

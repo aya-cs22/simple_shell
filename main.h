@@ -13,11 +13,14 @@
 #include <signal.h>
 
 extern char **environ;
-int execute_file(char **command);
+int execute_file(char *command, char **argv);
 char *tem_getline(void);
 char **tmp_strtok(char *buffer);
 char *getpath(char *filename);
 void interacrive(void);
 void _getenv(void);
+void noninteractive(void);
+void interactive_mode(char **argv, char **env);
+
 
 #endif

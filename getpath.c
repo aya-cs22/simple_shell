@@ -13,6 +13,10 @@ char *getpath(char *filename)
 	char *fullpath, *path = getenv("PATH");
 	char *pathcpy = strdup(path);
 
+	if (pathcpy == NULL)
+	{
+		perror("strdup ERROR:");
+		return (NULL); }
 	token = strtok(pathcpy, ":");
 	while (token != NULL)
 	{

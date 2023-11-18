@@ -14,19 +14,21 @@ char **tmp_strtok(char *buffer)
 	char *token, *bufcpy = strdup(buffer);
 	char **ptrarr;
 
-	token = strtok(bufcpy, " \t\n");
+	if (bufcpy == NULL)
+	{
+		perror("strdup ERROR:");
+		exit(EXIT_FAILURE); }
+	token = strtok(bufcpy, "\t\n ");
 	while (token != NULL)
 	{
 		i++;
 		token = strtok(NULL, " \t\n"); }
-	free(bufcpy);
 	ptrarr = malloc(sizeof(char *) * (i + 1));
 	if (ptrarr == NULL)
 	{
 		perror("malloc ERROR:");
-		free(buffer);
-		free(ptrarr);
-		exit(EXIT_FAILURE); }
+		free(bufcpy);
+		return (NULL); }
 	i = 0;
 	token = strtok(buffer, " \t\n");
 	while (token != NULL)
@@ -34,7 +36,7 @@ char **tmp_strtok(char *buffer)
 		ptrarr[i] = (token);
 		token = strtok(NULL, " \t\n");
 		i++; }
-	free(buffer), buffer = NULL;
 	ptrarr[i] = NULL;
+	free(bufcpy);
 	return (ptrarr);
 }
