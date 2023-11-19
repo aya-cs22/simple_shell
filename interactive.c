@@ -9,7 +9,6 @@ void interacrive(void)
 {
 	char *fullpath, *buffer = NULL;
 	char **bufptr = NULL;
-	int i = 0;
 
 	while (1)
 	{
@@ -20,7 +19,6 @@ void interacrive(void)
 		{
 			if (strcmp(bufptr[0], "exit") == 0)
 			{
-				free(buffer);
 				free(bufptr);
 				exit(EXIT_SUCCESS);
 			}
@@ -28,7 +26,7 @@ void interacrive(void)
 			{
 				_getenv();
 			}
-			fullpath = getpath(bufptr[0]);
+			fullpath = getpath(bufptr);
 			if (fullpath == NULL)
 				fullpath = bufptr[0];
 
@@ -36,8 +34,5 @@ void interacrive(void)
 			{
 				perror(getenv("_")); } }
 		else
-		{
-			free(bufptr[i]);
 			free(bufptr); }
-	}
 }

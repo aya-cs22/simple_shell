@@ -8,6 +8,7 @@
 void noninteractive(void)
 {
 	char *fullpath, *buffer = NULL;
+    int i;
 	char **bufptr = NULL;
 
 	while (1)
@@ -18,8 +19,6 @@ void noninteractive(void)
 		bufptr = tmp_strtok(buffer);
 		if (strcmp(bufptr[0], "exit") == 0)
 		{
-			
-			free(buffer);
 			free(bufptr);
 			exit(EXIT_SUCCESS);
 		}
@@ -27,14 +26,17 @@ void noninteractive(void)
 		{
 			_getenv();
 		}
-		fullpath = getpath(bufptr[0]);
+		fullpath = getpath(bufptr);
 		if (fullpath == NULL)
 			fullpath = bufptr[0];
 
 		if (execute_file(fullpath, bufptr) == -1)
 		{
-			perror("ERROR:");
-			exit(EXIT_FAILURE); } }
-	free(buffer);
-	free(bufptr);
+			perror(getenv("_")); }
+		else
+        {
+            for (i = 0; bufptr[i]; i++)
+            {
+                free(bufptr[i]); } }
+            free(bufptr); }
 }

@@ -7,34 +7,39 @@
  * NULL on failure or EOF
 */
 
-char *getpath(char *filename)
+char *getpath(char **filename)
 {
 	char *token;
+	int i = 0;
 	char *fullpath, *path = getenv("PATH");
 	char *pathcpy = strdup(path);
 
 	if (pathcpy == NULL)
 	{
 		perror("strdup ERROR:");
-		return (NULL); }
+		path = NULL;
+		exit(EXIT_FAILURE); }
 	token = strtok(pathcpy, ":");
 	while (token != NULL)
 	{
-		fullpath = malloc(sizeof(char) * (strlen(token) + strlen(filename) + 2));
+		fullpath = malloc(sizeof(char) * (strlen(token) + strlen(filename[0]) + 2));
 		if (fullpath == NULL)
 		{
 			perror("malloc ERROR:");
 			free(pathcpy);
-			return (NULL); }
+			for (i = 0; filename[i]; i++)
+			{
+				free(filename[i]); }
+			free(filename);
+			exit(EXIT_FAILURE); }
 		strcpy(fullpath, token);
 		strcat(fullpath, "/");
-		strcat(fullpath, filename);
+		strcat(fullpath, (const char *)filename[0]);
 		if (access(fullpath, X_OK) == 0)
 		{
 			free(pathcpy);
 			return (fullpath); }
 		free(fullpath);
 		token = strtok(NULL, ":"); }
-	free(pathcpy);
 	return (NULL);
 }

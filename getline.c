@@ -22,7 +22,8 @@ char *tem_getline(void)
 			else if (ferror(stdin))
 			{
 				perror("ERROR reading line:");
-				free(buffer);
+				if (buffer != NULL)
+					free(buffer);
 				return (NULL);
 			}
 		}

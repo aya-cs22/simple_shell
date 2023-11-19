@@ -18,25 +18,34 @@ char **tmp_strtok(char *buffer)
 	{
 		perror("strdup ERROR:");
 		exit(EXIT_FAILURE); }
-	token = strtok(bufcpy, "\t\n ");
+	token = strtok(bufcpy, " \t\n");
 	while (token != NULL)
 	{
 		i++;
 		token = strtok(NULL, " \t\n"); }
+	free(bufcpy), bufcpy = NULL;
 	ptrarr = malloc(sizeof(char *) * (i + 1));
 	if (ptrarr == NULL)
 	{
 		perror("malloc ERROR:");
-		free(bufcpy);
-		return (NULL); }
+		exit(EXIT_FAILURE); }
 	i = 0;
 	token = strtok(buffer, " \t\n");
 	while (token != NULL)
 	{
-		ptrarr[i] = (token);
+		ptrarr[i] = strdup(token);
+		if (ptrarr[i] == NULL)
+		{
+			perror("strdup ERROR:");
+			for (i = 0; ptrarr[i]; i++)
+			{
+				free(ptrarr[i]); }
+			free(ptrarr);
+			exit(EXIT_FAILURE);
+		}
 		token = strtok(NULL, " \t\n");
 		i++; }
 	ptrarr[i] = NULL;
-	free(bufcpy);
+	free(buffer), buffer = NULL;
 	return (ptrarr);
 }

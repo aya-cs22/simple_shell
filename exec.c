@@ -9,7 +9,7 @@
 
 int execute_file(char *command, char **argv)
 {
-	int status;
+	int status, i;
 	pid_t id;
 
 	if (access(command, F_OK) != 0)
@@ -20,14 +20,24 @@ int execute_file(char *command, char **argv)
 	id = fork();
 	if (id == 0)
 	{
-		if (execve(command, argv, NULL) == -1)
+		if (execve(command, argv, environ) == -1)
 		{
-			perror(argv[0]);
+			perror(command);
 			free(command);
-			exit(100);
+			for (i = 0; argv[i]; i++)
+			{
+				free(argv[i]);
+			}
+			free(argv);
+			exit(EXIT_FAILURE);
 		}
 	}
 	waitpid(id, &status, 0);
 	free(command);
+	for (i = 0; argv[i]; i++)
+	{
+		free(argv[i]);
+	}
+	free(argv);
 	return (WEXITSTATUS(status));
 }
