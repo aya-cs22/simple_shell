@@ -34,10 +34,5 @@ int execute_file(char *command, char **argv)
 	}
 	waitpid(id, &status, 0);
 	free(command);
-	for (i = 0; argv[i]; i++)
-	{
-		free(argv[i]);
-	}
-	free(argv);
 	return (WEXITSTATUS(status));
 }

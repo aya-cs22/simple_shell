@@ -8,7 +8,7 @@
 void noninteractive(void)
 {
 	char *fullpath, *buffer = NULL;
-    int i;
+	int i;
 	char **bufptr = NULL;
 
 	while (1)
@@ -17,12 +17,12 @@ void noninteractive(void)
 		if (buffer[0] == '\0' || buffer[0] == '\n')
 			continue;
 		bufptr = tmp_strtok(buffer);
-		if (strcmp(bufptr[0], "exit") == 0)
+		if (_strcmp(bufptr[0], "exit") == 0)
 		{
 			free(bufptr);
 			exit(EXIT_SUCCESS);
 		}
-		if (strcmp(bufptr[0], "env") == 0)
+		if (_strcmp(bufptr[0], "env") == 0)
 		{
 			_getenv();
 		}
@@ -32,11 +32,9 @@ void noninteractive(void)
 
 		if (execute_file(fullpath, bufptr) == -1)
 		{
-			perror(getenv("_")); }
-		else
-        {
-            for (i = 0; bufptr[i]; i++)
-            {
-                free(bufptr[i]); } }
-            free(bufptr); }
+			perror(getenv("_"));
+			for (i = 0; bufptr[i]; i++)
+			{
+				free(bufptr[i]); } }
+			free(bufptr); }
 }

@@ -46,6 +46,6 @@ char **tmp_strtok(char *buffer)
 		token = strtok(NULL, " \t\n");
 		i++; }
 	ptrarr[i] = NULL;
-	free(buffer), buffer = NULL;
+	free(buffer);
 	return (ptrarr);
 }

@@ -14,7 +14,7 @@ int main(int argc, const char *argv[])
 
 		if (isatty(STDIN_FILENO) == 1)
 		{
-			interacrive();
+			interactive();
 		}
 		else
 		{

@@ -1,14 +1,15 @@
 #include "main.h"
 
 /**
- * interacrive - interactively executes a command
+ * interactive - interactively executes a command
  * Return: void
 */
 
-void interacrive(void)
+void interactive(void)
 {
 	char *fullpath, *buffer = NULL;
 	char **bufptr = NULL;
+	int i;
 
 	while (1)
 	{
@@ -17,12 +18,12 @@ void interacrive(void)
 		bufptr = tmp_strtok(buffer);
 		if (bufptr[0] != NULL)
 		{
-			if (strcmp(bufptr[0], "exit") == 0)
+			if (_strcmp(bufptr[0], "exit") == 0)
 			{
 				free(bufptr);
 				exit(EXIT_SUCCESS);
 			}
-			if (strcmp(bufptr[0], "env") == 0)
+			if (_strcmp(bufptr[0], "env") == 0)
 			{
 				_getenv();
 			}
@@ -32,7 +33,11 @@ void interacrive(void)
 
 			if (execute_file(fullpath, bufptr) == -1)
 			{
-				perror(getenv("_")); } }
-		else
-			free(bufptr); }
+				perror(getenv("_")); } } }
+
+	for (i = 0; bufptr[i]; i++)
+	{
+		free(bufptr[i]);
+	}
+	free(bufptr);
 }

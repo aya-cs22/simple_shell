@@ -32,9 +32,9 @@ char *getpath(char **filename)
 				free(filename[i]); }
 			free(filename);
 			exit(EXIT_FAILURE); }
-		strcpy(fullpath, token);
-		strcat(fullpath, "/");
-		strcat(fullpath, (const char *)filename[0]);
+		_strcpy(fullpath, token);
+		_strcat(fullpath, "/");
+		_strcat(fullpath, (char *)filename[0]);
 		if (access(fullpath, X_OK) == 0)
 		{
 			free(pathcpy);
